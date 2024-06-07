@@ -11,6 +11,13 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            children: [Container()],
+          ),
+        ),
+      ),
     );
   }
 }
