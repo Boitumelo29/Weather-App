@@ -43,8 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   return Column(
                     children: [
-                      Text(snapshot.data!.main),
-                      Text(snapshot.data!.description)
+                      Text(city.text.toUpperCase()),
+                      Text(snapshot.data!.main.toUpperCase()),
+                      Text(snapshot.data!.description.toUpperCase()),
+                      Text("${snapshot.data!.humidity}"),
+                      Text("${snapshot.data!.temp}"),
                     ],
                   );
                 }
