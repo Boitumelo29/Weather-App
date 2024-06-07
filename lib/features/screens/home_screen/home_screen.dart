@@ -38,13 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             TextField(
               controller: city,
-              decoration: InputDecoration(border: ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.blueGrey),
+                      borderRadius: BorderRadius.circular(30))),
             ),
             ElevatedButton(
               onPressed: () {
                 fetchWeatherData(city.text);
               },
-              child: const Text("search"),
+              child: const Text(
+                "search",
+                style: TextStyle(color: Colors.blueGrey),
+              ),
             ),
             if (dataModel != null)
               FutureBuilder<WeatherModel>(
@@ -53,16 +59,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (snapshot.hasData) {
                     return Column(
                       children: [
-                        tempIcon(snapshot.data!.humidity),
-                        Text(city.text.toUpperCase()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                          tempIcon(snapshot.data!.humidity),
+                          Text("${snapshot.data!.temp}"),
+                        ],),
+                        Text(city.text.toUpperCase(), style: TextStyle(fontSize: 30),),
                         Text(snapshot.data!.main.toUpperCase()),
                         Text(snapshot.data!.description.toUpperCase()),
                         Text("${snapshot.data!.humidity}"),
-                        Text("${snapshot.data!.temp}"),
+
                       ],
                     );
                   }
-                  return const CircularProgressIndicator();
+                  return const CircularProgressIndicator(
+                    color: Colors.blueGrey,
+                  );
                 },
               )
           ],
@@ -81,16 +95,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Icon tempIcon(int weather) {
     if (weather >= 100) {
-      return const Icon(Icons.wb_sunny);
+      return const Icon(
+        Icons.wb_sunny,
+        size: 60,
+        color: Colors.yellow,
+      );
     } else if (weather >= 70) {
-      return const Icon(Icons.cloud);
+      return const Icon(
+        Icons.cloud,
+        size: 60,
+        color: Colors.blue,
+      );
     } else if (weather >= 40) {
-      return const Icon(Icons.water_drop_outlined);
+      return const Icon(
+        Icons.water_drop_outlined,
+        size: 60,
+        color: Colors.blueAccent,
+      );
     } else if (weather >= 30) {
-      return const Icon(Icons.cloud);
+      return const Icon(
+        Icons.cloud,
+        size: 60,
+        color: Colors.blue,
+      );
     } else if (weather >= 0) {
-      return const Icon(Icons.ac_unit);
+      return const Icon(
+        Icons.ac_unit,
+        color: Colors.blueGrey,
+        size: 60,
+      );
     }
-    return const Icon(Icons.error);
+    return const Icon(
+      Icons.error,
+      size: 60,
+      color: Colors.red,
+    );
   }
 }
