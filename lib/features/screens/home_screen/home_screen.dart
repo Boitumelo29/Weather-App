@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController city = TextEditingController();
   DataService dataService = DataService();
-  Future<DataModel>? dataModel;
+  Future<WeatherModel>? dataModel;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: const Text("search"),
           ),
           if (dataModel != null)
-            FutureBuilder<DataModel>(
+            FutureBuilder<WeatherModel>(
               future: dataModel,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
