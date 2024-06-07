@@ -13,6 +13,7 @@ class DataService {
         Uri.https('api.openweathermap.org', 'data/2.5/weather', queryParameter);
 
     final response = await http.get(uri);
+    print(response.body);
 
     try {
       final jsonData = json.decode(response.body);
