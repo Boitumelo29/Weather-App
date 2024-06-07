@@ -21,42 +21,52 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title:
+            Text(widget.title, style: const TextStyle(color: Colors.blueGrey)),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          const Text("My Weather App"),
-          const Text("Please Enter your Location"),
-          TextField(
-            controller: city,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              fetchWeatherData(city.text);
-            },
-            child: const Text("search"),
-          ),
-          if (dataModel != null)
-            FutureBuilder<WeatherModel>(
-              future: dataModel,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    children: [
-                      tempIcon(snapshot.data!.humidity),
-                      Text(city.text.toUpperCase()),
-                      Text(snapshot.data!.main.toUpperCase()),
-                      Text(snapshot.data!.description.toUpperCase()),
-                      Text("${snapshot.data!.humidity}"),
-                      Text("${snapshot.data!.temp}"),
-                    ],
-                  );
-                }
-                return const CircularProgressIndicator();
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          children: [
+            Text(
+              "Please Enter Your city",
+              style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              controller: city,
+              decoration: InputDecoration(border: ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                fetchWeatherData(city.text);
               },
-            )
-        ],
+              child: const Text("search"),
+            ),
+            if (dataModel != null)
+              FutureBuilder<WeatherModel>(
+                future: dataModel,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        tempIcon(snapshot.data!.humidity),
+                        Text(city.text.toUpperCase()),
+                        Text(snapshot.data!.main.toUpperCase()),
+                        Text(snapshot.data!.description.toUpperCase()),
+                        Text("${snapshot.data!.humidity}"),
+                        Text("${snapshot.data!.temp}"),
+                      ],
+                    );
+                  }
+                  return const CircularProgressIndicator();
+                },
+              )
+          ],
+        ),
       ),
     );
   }
@@ -84,6 +94,3 @@ class _HomeScreenState extends State<HomeScreen> {
     return const Icon(Icons.error);
   }
 }
-
-
-
