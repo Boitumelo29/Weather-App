@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController city = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -14,7 +15,16 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: SafeArea(
           child: Column(
-            children: [Container()],
+            children: [
+              Container(),
+              const Text("My Weather App"),
+              const Text("Please Enter your Location"),
+              //here would be a container that then adds default data the removes when you entered your data
+              TextField(
+                controller: city,
+              ),
+            // WeatherScreen(city: city.text)
+            ],
           ),
         ),
       ),

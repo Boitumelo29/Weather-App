@@ -64,7 +64,7 @@ class _WeatherPageState extends State<WeatherPage> {
                   size: 30,
                   color: Colors.yellow,
                 ),
-                Text(weather.description),
+                Text(weather.description ?? weatherResponse!.description),
                 const SizedBox(height: 10),
                 TextField(
                   controller: search,
