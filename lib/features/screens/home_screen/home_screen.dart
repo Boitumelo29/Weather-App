@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/networks/data_model/data_model.dart';
 import 'package:weatherapp/networks/data_service/data_service.dart';
@@ -43,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   return Column(
                     children: [
+                      tempIcon(snapshot.data!.humidity),
                       Text(city.text.toUpperCase()),
                       Text(snapshot.data!.main.toUpperCase()),
                       Text(snapshot.data!.description.toUpperCase()),
@@ -66,4 +68,22 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
   }
+
+  Icon tempIcon(int weather) {
+    if (weather >= 100) {
+      return const Icon(Icons.wb_sunny);
+    } else if (weather >= 70) {
+      return const Icon(Icons.cloud);
+    } else if (weather >= 40) {
+      return const Icon(Icons.water_drop_outlined);
+    } else if (weather >= 30) {
+      return const Icon(Icons.cloud);
+    } else if (weather >= 0) {
+      return const Icon(Icons.ac_unit);
+    }
+    return const Icon(Icons.error);
+  }
 }
+
+
+
