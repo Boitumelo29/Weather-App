@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             //instead off a textfield remove the textfield after search witha a button to close it and then place moc data
             // try search how you can add it to the app bar
-            Text(dailyMeeting()),
             Text(
               dailyMeeting(),
               style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
@@ -43,18 +42,15 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               controller: city,
               decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      fetchWeatherData(city.text);
+                    },
+                    icon: const Icon(Icons.search),
+                  ),
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(30))),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                fetchWeatherData(city.text);
-              },
-              child: const Text(
-                "search",
-                style: TextStyle(color: Colors.blueGrey),
-              ),
             ),
             if (dataModel != null)
               FutureBuilder<WeatherModel>(
