@@ -29,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
+            //instead off a textfield remove the textfield after search witha a button to close it and then place moc data
+            // try search how you can add it to the app bar
             Text(
               "Please Enter Your city",
               style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
