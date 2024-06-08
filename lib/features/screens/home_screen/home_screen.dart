@@ -29,17 +29,25 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            //instead off a textfield remove the textfield after search witha a button to close it and then place moc data
-            // try search how you can add it to the app bar
             Text(
               dailyMeeting(),
               style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
+            ),
+            Text(
+              city.text.toUpperCase(),
+              style: TextStyle(
+                color: Colors.blueGrey[400],
+                fontSize: 10,
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
             TextField(
+              textCapitalization: TextCapitalization.words,
               controller: city,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
@@ -48,8 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   icon: const Icon(Icons.search, color: Colors.blueGrey),
                 ),
-                border: const OutlineInputBorder(
-                  borderSide: BorderSide.none,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(color: Colors.blueGrey),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
