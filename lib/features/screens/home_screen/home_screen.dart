@@ -20,6 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentTime = DateTime.now();
+    final hour = currentTime.hour;
     return Scaffold(
       appBar: AppBar(
         title:
@@ -37,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 dailyMeeting(),
                 style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
               ),
+              Text("$hour"),
               Text(
                 city.text.toUpperCase(),
                 style: TextStyle(
