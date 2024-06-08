@@ -115,7 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Text(snapshot.data!.main.toUpperCase()),
                                   Text(
                                       snapshot.data!.description.toUpperCase()),
-                                  Text("${snapshot.data!.humidity}"),
+                                  Text("Humidity: ${snapshot.data!.humidity}"),
+                                  Text("Wind: ${snapshot.data!.wind}"),
+                                  Text(
+                                      "Feels Like: ${snapshot.data!.feelsLike}"), Text(
+                                      "TimeZone: ${snapshot.data!.timezone}"),
                                 ],
                               ),
                             ),
