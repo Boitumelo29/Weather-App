@@ -22,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final currentTime = DateTime.now();
     final hour = currentTime.hour.toString();
-    final day = currentTime.day;
-    final DateFormat formatter = DateFormat('dd MMMM');
+    //final DateFormat newForm = ;
+    final DateFormat formatter = DateFormat('dd MMMM yy');
     final String formattedDate = formatter.format(currentTime);
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text("The hour: $hour"),
               Text("The month $formattedDate"),
-              Text("The day: $day"),
               Text(
                 city.text.toUpperCase(),
                 style: TextStyle(
