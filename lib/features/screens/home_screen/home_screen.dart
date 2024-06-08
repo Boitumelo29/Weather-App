@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             TextField(
-              textCapitalization: TextCapitalization.words,
+              textCapitalization: TextCapitalization.characters,
               controller: city,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
