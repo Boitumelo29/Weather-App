@@ -76,45 +76,52 @@ class _HomeScreenState extends State<HomeScreen> {
                   future: dataModel,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      return Column(
-                        children: [
-                          Container(
-                            width: 350,
-                            height: 440,
-                            decoration: BoxDecoration(
-                              color: Colors.blueGrey
-                                  ,
-                              borderRadius: BorderRadius.circular(10)
+                      return Center(
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 320,
+                              height: 440,
+                              decoration: BoxDecoration(
+                                  color: Colors.blueGrey,
+                                  borderRadius: BorderRadius.circular(18)),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    city.text.toUpperCase(),
+                                    style: const TextStyle(fontSize: 30),
+                                  ),
+                                  const Text("Today"),
+                                  const Text("Time"),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      tempIcon(snapshot.data!.humidity),
+                                      Text("${snapshot.data!.temp}"),
+                                    ],
+                                  ),
+                                  Text(snapshot.data!.main.toUpperCase()),
+                                  Text(
+                                      snapshot.data!.description.toUpperCase()),
+                                  Text("${snapshot.data!.humidity}"),
+                                ],
+                              ),
                             ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    tempIcon(snapshot.data!.humidity),
-                                    Text("${snapshot.data!.temp}"),
-                                  ],
-                                ),
-                                Text(
-                                  city.text.toUpperCase(),
-                                  style: TextStyle(fontSize: 30),
-                                ),
-                                Text(snapshot.data!.main.toUpperCase()),
-                                Text(snapshot.data!.description.toUpperCase()),
-                                Text("${snapshot.data!.humidity}"),
-                              ],
+                            const SizedBox(
+                              height: 20,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            color: Colors.blue,
-                          )
-                        ],
+                            Container(
+                              width: 100,
+                              height: 100,
+                              color: Colors.blue,
+                            )
+                          ],
+                        ),
                       );
                     }
                     return const CircularProgressIndicator(
