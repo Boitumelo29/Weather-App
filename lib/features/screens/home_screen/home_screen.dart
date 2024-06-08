@@ -26,78 +26,104 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(widget.title, style: const TextStyle(color: Colors.blueGrey)),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              dailyMeeting(),
-              style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
-            ),
-            Text(
-              city.text.toUpperCase(),
-              style: TextStyle(
-                color: Colors.blueGrey[400],
-                fontSize: 10,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                dailyMeeting(),
+                style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              textCapitalization: TextCapitalization.characters,
-              controller: city,
-              decoration: InputDecoration(
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    fetchWeatherData(city.text);
-                  },
-                  icon: const Icon(Icons.search, color: Colors.blueGrey),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(color: Colors.blueGrey),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(color: Colors.blueGrey),
+              Text(
+                city.text.toUpperCase(),
+                style: TextStyle(
+                  color: Colors.blueGrey[400],
+                  fontSize: 10,
                 ),
               ),
-            ),
-            if (dataModel != null)
-              FutureBuilder<WeatherModel>(
-                future: dataModel,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            tempIcon(snapshot.data!.humidity),
-                            Text("${snapshot.data!.temp}"),
-                          ],
-                        ),
-                        Text(
-                          city.text.toUpperCase(),
-                          style: TextStyle(fontSize: 30),
-                        ),
-                        Text(snapshot.data!.main.toUpperCase()),
-                        Text(snapshot.data!.description.toUpperCase()),
-                        Text("${snapshot.data!.humidity}"),
-//
-                      ],
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                textCapitalization: TextCapitalization.characters,
+                controller: city,
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      fetchWeatherData(city.text);
+                    },
+                    icon: const Icon(Icons.search, color: Colors.blueGrey),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.blueGrey),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.blueGrey),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              if (dataModel != null)
+                FutureBuilder<WeatherModel>(
+                  future: dataModel,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Column(
+                        children: [
+                          Container(
+                            width: 350,
+                            height: 440,
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey
+                                  ,
+                              borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    tempIcon(snapshot.data!.humidity),
+                                    Text("${snapshot.data!.temp}"),
+                                  ],
+                                ),
+                                Text(
+                                  city.text.toUpperCase(),
+                                  style: TextStyle(fontSize: 30),
+                                ),
+                                Text(snapshot.data!.main.toUpperCase()),
+                                Text(snapshot.data!.description.toUpperCase()),
+                                Text("${snapshot.data!.humidity}"),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            color: Colors.blue,
+                          )
+                        ],
+                      );
+                    }
+                    return const CircularProgressIndicator(
+                      color: Colors.blueGrey,
                     );
-                  }
-                  return const CircularProgressIndicator(
-                    color: Colors.blueGrey,
-                  );
-                },
-              )
-          ],
+                  },
+                )
+            ],
+          ),
         ),
       ),
     );
