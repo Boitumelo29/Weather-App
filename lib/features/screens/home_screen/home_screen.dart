@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(snapshot.data!.main.toUpperCase()),
                         Text(snapshot.data!.description.toUpperCase()),
                         Text("${snapshot.data!.humidity}"),
-/// testing 
+/// test
                       ],
                     );
                   }
