@@ -42,15 +42,20 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               controller: city,
               decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      fetchWeatherData(city.text);
-                    },
-                    icon: const Icon(Icons.search),
-                  ),
-                  border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.blueGrey),
-                      borderRadius: BorderRadius.circular(30))),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    fetchWeatherData(city.text);
+                  },
+                  icon: const Icon(Icons.search, color: Colors.blueGrey),
+                ),
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(color: Colors.blueGrey),
+                ),
+              ),
             ),
             if (dataModel != null)
               FutureBuilder<WeatherModel>(
