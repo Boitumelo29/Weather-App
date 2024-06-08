@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/networks/data_model/data_model.dart';
 import 'package:weatherapp/networks/data_service/data_service.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
@@ -31,8 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             //instead off a textfield remove the textfield after search witha a button to close it and then place moc data
             // try search how you can add it to the app bar
+            Text(dailyMeeting()),
             Text(
-              "Please Enter Your city",
+              dailyMeeting(),
               style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
             ),
             const SizedBox(
@@ -65,10 +67,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                          tempIcon(snapshot.data!.humidity),
-                          Text("${snapshot.data!.temp}"),
-                        ],),
-                        Text(city.text.toUpperCase(), style: TextStyle(fontSize: 30),),
+                            tempIcon(snapshot.data!.humidity),
+                            Text("${snapshot.data!.temp}"),
+                          ],
+                        ),
+                        Text(
+                          city.text.toUpperCase(),
+                          style: TextStyle(fontSize: 30),
+                        ),
                         Text(snapshot.data!.main.toUpperCase()),
                         Text(snapshot.data!.description.toUpperCase()),
                         Text("${snapshot.data!.humidity}"),
@@ -85,6 +91,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  String dailyMeeting() {
+    final currentTime = DateTime.now();
+    final hour = currentTime.hour;
+
+    if (hour >= 0 && hour < 12) {
+      return "Good Morning";
+    } else if (hour >= 12 && hour < 18) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
   }
 
   void fetchWeatherData(String city) {
