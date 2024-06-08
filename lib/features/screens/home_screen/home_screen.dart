@@ -21,7 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final currentTime = DateTime.now();
-    final hour = currentTime.hour;
+    final hour = currentTime.hour.toString();
+    final day = currentTime.day;
+    final DateFormat formatter = DateFormat('dd MMMM');
+    final String formattedDate = formatter.format(currentTime);
     return Scaffold(
       appBar: AppBar(
         title:
@@ -39,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 dailyMeeting(),
                 style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
               ),
-              Text("$hour"),
+              Text("The hour: $hour"),
+              Text("The month $formattedDate"),
+              Text("The day: $day"),
               Text(
                 city.text.toUpperCase(),
                 style: TextStyle(
