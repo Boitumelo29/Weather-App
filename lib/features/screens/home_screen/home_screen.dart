@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                dailyMeeting(),
+                CurrentTimes.dailyMeeting(),
                 style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
               ),
               Text(
@@ -140,19 +140,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
-
-  String dailyMeeting() {
-    final currentTime = DateTime.now();
-    final hour = currentTime.hour;
-
-    if (hour >= 0 && hour < 12) {
-      return "Good Morning";
-    } else if (hour >= 12 && hour < 18) {
-      return "Good Afternoon";
-    } else {
-      return "Good Evening";
-    }
   }
 
   void fetchWeatherData(String city) {
