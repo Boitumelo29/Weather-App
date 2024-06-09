@@ -42,8 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 dailyMeeting(),
                 style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
               ),
-              Text("The hour: $hour"),
-              Text("The month $formattedDate"),
               Text(
                 city.text.toUpperCase(),
                 style: TextStyle(
@@ -98,8 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     city.text.toUpperCase(),
                                     style: const TextStyle(fontSize: 30),
                                   ),
-                                  const Text("Today"),
-                                  const Text("Time"),
+                                  Text("The hour: $hour"),
+                                  Text("The month $formattedDate"),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -118,8 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Text("Humidity: ${snapshot.data!.humidity}"),
                                   Text("Wind: ${snapshot.data!.wind}"),
                                   Text(
-                                      "Feels Like: ${snapshot.data!.feelsLike}"), Text(
-                                      "TimeZone: ${snapshot.data!.timezone}"),
+                                      "Feels Like: ${snapshot.data!.feelsLike}"),
+                                  Text("TimeZone: ${snapshot.data!.timezone}"),
                                 ],
                               ),
                             ),
