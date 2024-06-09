@@ -104,10 +104,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Text(
                                       snapshot.data!.description.toUpperCase()),
                                   Text("Humidity: ${snapshot.data!.humidity}"),
-                                  Text("Wind: ${snapshot.data!.wind}"),
-                                  Text(
-                                      "Feels Like: ${snapshot.data!.feelsLike}"),
-                                  Text("TimeZone: ${snapshot.data!.timezone}"),
+                                  Row(
+                                    children: <Widget>[
+                                      Text("Wind: ${snapshot.data!.wind}"),
+                                      const Text("|"),
+                                      Text(
+                                          "Feels Like: ${snapshot.data!.feelsLike}"),
+                                      const Text("|"),
+                                      Text(
+                                          "TimeZone: ${snapshot.data!.timezone}"),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
