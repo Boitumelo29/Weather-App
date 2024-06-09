@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/networks/data_model/data_model.dart';
 import 'package:weatherapp/networks/data_service/data_service.dart';
+import 'package:weatherapp/networks/funtions/fetch_weather.dart';
 import 'package:weatherapp/utils/times/times.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -92,12 +93,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     city.text.toUpperCase(),
                                     style: const TextStyle(fontSize: 30),
                                   ),
-                                  Text("The hour: ${CurrentTimes.time}"),
-                                  Text("The date: ${CurrentTimes.date}"),
+                                  Text(CurrentTimes.date),
+                                  Text(CurrentTimes.time),
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  tempIcon(snapshot.data!.humidity),
+                                  FetchWeatherIcon.tempIcon(
+                                      snapshot.data!.humidity),
                                   Text("${snapshot.data!.temp}"),
                                   Text(snapshot.data!.main.toUpperCase()),
                                   Text(
@@ -153,44 +155,5 @@ class _HomeScreenState extends State<HomeScreen> {
         dataModel = dataService.fetchData(city);
       });
     }
-  }
-
-  Icon tempIcon(int weather) {
-    if (weather >= 100) {
-      return const Icon(
-        Icons.wb_sunny,
-        size: 120,
-        color: Colors.yellow,
-      );
-    } else if (weather >= 70) {
-      return const Icon(
-        Icons.cloud,
-        size: 120,
-        color: Colors.blue,
-      );
-    } else if (weather >= 40) {
-      return const Icon(
-        Icons.water_drop_outlined,
-        size: 120,
-        color: Colors.blueAccent,
-      );
-    } else if (weather >= 30) {
-      return const Icon(
-        Icons.cloud,
-        size: 120,
-        color: Colors.blue,
-      );
-    } else if (weather >= 0) {
-      return const Icon(
-        Icons.ac_unit,
-        color: Colors.blueGrey,
-        size: 120,
-      );
-    }
-    return const Icon(
-      Icons.error,
-      size: 120,
-      color: Colors.red,
-    );
   }
 }
