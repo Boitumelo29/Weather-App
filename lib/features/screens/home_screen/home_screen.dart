@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController city = TextEditingController();
   DataService dataService = DataService();
   Future<WeatherModel>? dataModel;
-  CurrentTimes times = CurrentTimes();
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     city.text.toUpperCase(),
                                     style: const TextStyle(fontSize: 30),
                                   ),
-                                  Text("The hour: ${times.time}"),
-                                  Text("The month ${times.date}"),
+                                  Text("The hour: ${CurrentTimes.time}"),
+                                  Text("The date: ${CurrentTimes.date}"),
                                   const SizedBox(
                                     height: 10,
                                   ),
