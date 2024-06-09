@@ -21,22 +21,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.blueGrey,
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            stops: [
-              0.1,
-              0.4,
-              0.6,
-              0.9,
-            ],
-            colors: [Colors.black45, Colors.black12],
-          )),
+          // decoration: const BoxDecoration(
+          //     gradient: LinearGradient(
+          //   begin: Alignment.topRight,
+          //   end: Alignment.bottomLeft,
+          //   stops: [
+          //     0.1,
+          //     0.4,
+          //     0.6,
+          //     0.9,
+          //   ],
+          //   colors: [Colors.black45, Colors.black12],
+         // )),
           child: Column(
             children: [
               Padding(
