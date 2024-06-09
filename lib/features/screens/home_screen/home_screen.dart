@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  Colors.blueGrey,
       appBar: AppBar(
         title:
             Text(widget.title, style: const TextStyle(color: Colors.blueGrey)),
@@ -36,12 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 CurrentTimes.dailyMeeting(),
-                style: TextStyle(color: Colors.blueGrey[300], fontSize: 30),
+                style: const TextStyle(color:Colors.white, fontSize: 30),
               ),
               Text(
                 city.text.toUpperCase(),
-                style: TextStyle(
-                  color: Colors.blueGrey[400],
+                style: const TextStyle(
+                  color: Colors.white,
                   fontSize: 10,
                 ),
               ),
@@ -61,11 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.blueGrey),
+                    borderSide: const BorderSide(color: Colors.white),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.blueGrey),
+                    borderSide: const BorderSide(color: Colors.white),
                   ),
                 ),
               ),
@@ -84,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 320,
                               height: 440,
                               decoration: BoxDecoration(
-                                  color: Colors.blueGrey,
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(18)),
                               child: Column(
                                 children: [
@@ -124,14 +125,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             Container(
                               width: 100,
                               height: 100,
-                              color: Colors.blue,
+                              color: Colors.white,
                             )
                           ],
                         ),
                       );
                     }
                     return const CircularProgressIndicator(
-                      color: Colors.blueGrey,
+                      color: Colors.white,
                     );
                   },
                 )
