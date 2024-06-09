@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/networks/data_model/data_model.dart';
 import 'package:weatherapp/networks/data_service/data_service.dart';
-import 'package:weatherapp/networks/funtions/fetch_weather.dart';
 import 'package:weatherapp/utils/times/times.dart';
+import 'package:weatherapp/utils/weather_icons/fetch_weather.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
