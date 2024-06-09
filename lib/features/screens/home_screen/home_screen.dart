@@ -25,22 +25,17 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            stops: const [
+            stops: [
               0.1,
               0.4,
               0.6,
               0.9,
             ],
-            colors: [
-              Colors.purple.withOpacity(0.5),
-              Colors.red.withOpacity(0.5),
-              Colors.indigo.withOpacity(0.5),
-              Colors.teal.withOpacity(0.5),
-            ],
+            colors: [Colors.black45, Colors.black12],
           )),
           child: Column(
             children: [
@@ -117,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 440,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         // stops: const [
@@ -127,8 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         // ],
                                         colors: [
                                           Colors.blue,
-                                          Colors.black45.withOpacity(0.5),
-                                          Colors.blue.withOpacity(0.5),
+                                          Colors.black,
                                         ],
                                       ),
                                     ),
