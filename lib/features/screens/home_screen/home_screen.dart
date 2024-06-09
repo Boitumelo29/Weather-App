@@ -21,10 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final currentTime = DateTime.now();
-    final hour = currentTime.hour.toString();
-    //final DateFormat newForm = ;
-    final DateFormat formatter = DateFormat('dd MMMM yy');
-    final String formattedDate = formatter.format(currentTime);
+    final DateFormat formattedTime = DateFormat('HH:mm');
+    final String time = formattedTime.format(currentTime);
+
+    final DateFormat formattedDate = DateFormat('dd MMMM yy');
+    final String date = formattedDate.format(currentTime);
     return Scaffold(
       appBar: AppBar(
         title:
@@ -96,20 +97,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     city.text.toUpperCase(),
                                     style: const TextStyle(fontSize: 30),
                                   ),
-                                  Text("The hour: $hour"),
-                                  Text("The month $formattedDate"),
+                                  Text("The hour: $time"),
+                                  Text("The month $date"),
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      tempIcon(snapshot.data!.humidity),
-                                      Text("${snapshot.data!.temp}"),
-                                    ],
-                                  ),
+                                  tempIcon(snapshot.data!.humidity),
+                                  Text("${snapshot.data!.temp}"),
                                   Text(snapshot.data!.main.toUpperCase()),
                                   Text(
                                       snapshot.data!.description.toUpperCase()),
@@ -170,37 +164,37 @@ class _HomeScreenState extends State<HomeScreen> {
     if (weather >= 100) {
       return const Icon(
         Icons.wb_sunny,
-        size: 60,
+        size: 120,
         color: Colors.yellow,
       );
     } else if (weather >= 70) {
       return const Icon(
         Icons.cloud,
-        size: 60,
+        size: 120,
         color: Colors.blue,
       );
     } else if (weather >= 40) {
       return const Icon(
         Icons.water_drop_outlined,
-        size: 60,
+        size: 120,
         color: Colors.blueAccent,
       );
     } else if (weather >= 30) {
       return const Icon(
         Icons.cloud,
-        size: 60,
+        size: 120,
         color: Colors.blue,
       );
     } else if (weather >= 0) {
       return const Icon(
         Icons.ac_unit,
         color: Colors.blueGrey,
-        size: 60,
+        size: 120,
       );
     }
     return const Icon(
       Icons.error,
-      size: 60,
+      size: 120,
       color: Colors.red,
     );
   }
