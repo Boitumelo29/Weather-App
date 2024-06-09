@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherapp/networks/data_model/data_model.dart';
 import 'package:weatherapp/networks/data_service/data_service.dart';
-import 'package:intl/intl.dart';
+import 'package:weatherapp/utils/times/times.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
@@ -17,15 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController city = TextEditingController();
   DataService dataService = DataService();
   Future<WeatherModel>? dataModel;
+  CurrentTimes times = CurrentTimes();
 
   @override
   Widget build(BuildContext context) {
-    final currentTime = DateTime.now();
-    final DateFormat formattedTime = DateFormat('HH:mm');
-    final String time = formattedTime.format(currentTime);
-
-    final DateFormat formattedDate = DateFormat('dd MMMM yy');
-    final String date = formattedDate.format(currentTime);
     return Scaffold(
       appBar: AppBar(
         title:
@@ -33,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
@@ -97,8 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     city.text.toUpperCase(),
                                     style: const TextStyle(fontSize: 30),
                                   ),
-                                  Text("The hour: $time"),
-                                  Text("The month $date"),
+                                  Text("The hour: ${times.time}"),
+                                  Text("The month ${times.date}"),
                                   const SizedBox(
                                     height: 10,
                                   ),
