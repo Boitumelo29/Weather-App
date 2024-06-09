@@ -21,122 +21,119 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.blueGrey,
-      appBar: AppBar(
-        title:
-            Text(widget.title, style: const TextStyle(color: Colors.blueGrey)),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                CurrentTimes.dailyMeeting(),
-                style: const TextStyle(color:Colors.white, fontSize: 30),
-              ),
-              Text(
-                city.text.toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
+      backgroundColor: Colors.blueGrey,
+      body: Center(
+        child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  CurrentTimes.dailyMeeting(),
+                  style: const TextStyle(color: Colors.white, fontSize: 30),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextField(
-                textCapitalization: TextCapitalization.characters,
-                controller: city,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      fetchWeatherData(city.text);
-                    },
-                    icon: const Icon(Icons.search, color: Colors.blueGrey),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.white),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.white),
+                Text(
+                  city.text.toUpperCase(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              if (dataModel != null)
-                FutureBuilder<WeatherModel>(
-                  future: dataModel,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Center(
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 320,
-                              height: 440,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(18)),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    city.text.toUpperCase(),
-                                    style: const TextStyle(fontSize: 30),
-                                  ),
-                                  Text(CurrentTimes.date),
-                                  Text(CurrentTimes.time),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  FetchWeatherIcon.tempIcon(
-                                      snapshot.data!.humidity),
-                                  Text("${snapshot.data!.temp}"),
-                                  Text(snapshot.data!.main.toUpperCase()),
-                                  Text(
-                                      snapshot.data!.description.toUpperCase()),
-                                  Text("Humidity: ${snapshot.data!.humidity}"),
-                                  Row(
-                                    children: <Widget>[
-                                      Text("Wind: ${snapshot.data!.wind}"),
-                                      const Text("|"),
-                                      Text(
-                                          "Feels Like: ${snapshot.data!.feelsLike}"),
-                                      const Text("|"),
-                                      Text(
-                                          "TimeZone: ${snapshot.data!.timezone}"),
-                                    ],
-                                  )
-                                ],
+                const SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                  textCapitalization: TextCapitalization.characters,
+                  controller: city,
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        fetchWeatherData(city.text);
+                      },
+                      icon: const Icon(Icons.search, color: Colors.blueGrey),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                if (dataModel != null)
+                  FutureBuilder<WeatherModel>(
+                    future: dataModel,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Center(
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 320,
+                                height: 440,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(18)),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      city.text.toUpperCase(),
+                                      style: const TextStyle(fontSize: 30),
+                                    ),
+                                    Text(CurrentTimes.date),
+                                    Text(CurrentTimes.time),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    FetchWeatherIcon.tempIcon(
+                                        snapshot.data!.humidity),
+                                    Text("${snapshot.data!.temp}"),
+                                    Text(snapshot.data!.main.toUpperCase()),
+                                    Text(
+                                        snapshot.data!.description.toUpperCase()),
+                                    Text("Humidity: ${snapshot.data!.humidity}"),
+                                    Row(
+                                      children: <Widget>[
+                                        Text("Wind: ${snapshot.data!.wind}"),
+                                        const Text("|"),
+                                        Text(
+                                            "Feels Like: ${snapshot.data!.feelsLike}"),
+                                        const Text("|"),
+                                        Text(
+                                            "TimeZone: ${snapshot.data!.timezone}"),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: 100,
-                              height: 100,
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                width: 100,
+                                height: 100,
+                                color: Colors.white,
+                              )
+                            ],
+                          ),
+                        );
+                      }
+                      return const CircularProgressIndicator(
+                        color: Colors.white,
                       );
-                    }
-                    return const CircularProgressIndicator(
-                      color: Colors.white,
-                    );
-                  },
-                )
-            ],
+                    },
+                  )
+              ],
+            ),
           ),
         ),
       ),
