@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //     0.9,
           //   ],
           //   colors: [Colors.black45, Colors.black12],
-         // )),
+          // )),
           child: Column(
             children: [
               Padding(
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         // stops: const [
                                         //   0.1,
                                         //   0.4,
-                                        // update update 
+                                        // update upda
                                         // ],
                                         colors: [
                                           Colors.blue,
