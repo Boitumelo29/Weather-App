@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         // stops: const [
                                         //   0.1,
                                         //   0.4,
-                                        // updat
+                                        // upd
                                         // ],
                                         colors: [
                                           Colors.blue,
